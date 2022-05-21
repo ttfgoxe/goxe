@@ -79,8 +79,8 @@ def send_email(subject,total,tk,QC,NCC,qc,ml,td,html,receiver_list,dm):
     fp = open('code128.png', 'rb')
     img = MIMEImage(fp.read())
     img.add_header('Content-Disposition', 'attachment', filename='code128.png')
-    img.add_header('X-Attachment-Id', '0')
-    img.add_header('Content-ID', '<0>')
+    #img.add_header('X-Attachment-Id', '0')
+    #img.add_header('Content-ID', '<0>')
     fp.close()
     email.attach(img)
 
