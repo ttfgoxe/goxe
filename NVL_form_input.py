@@ -95,6 +95,7 @@ def send_email(subject,total,tk,QC,NCC,qc,ml,td,html,receiver_list,dm):
         'html', 'utf-8'))
     part1 = MIMEText(html, 'html')
     email.attach(part1)
+    st.
     try:
         session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
         session.starttls() #enable security
