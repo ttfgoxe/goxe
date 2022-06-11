@@ -69,7 +69,6 @@ def send_email(subject,total,tk,QC,NCC,qc,ml,td,html,receiver_list,dm):
     # (1) Create the email head (sender, receiver, and subject)
     sender_email = st.secrets['SENDER_EMAIL']
     password = st.secrets['PWD_EMAIL']
-    # receiver_email='hieulam1312@gmail.com'
     email = MIMEMultipart()
     email["From"] = sender_email
     # email["To"] = 'abc'
@@ -122,7 +121,6 @@ def eccount(df):
     elif len(uni_dai)==1:
         string_dai=str(int(uni_dai[0]))
     else:
-
         string_dai=str(int(uni_dai[0]))+"-"+str(int(uni_dai[-1]))
     df4['DÀI 2']=string_dai
     df4['THẺ KIỆN2']=tk
@@ -505,7 +503,8 @@ else:
         list_dt=xuat(tk)
 #         list_dt[0]
         send_email("Thẻ kiện: "+tk+" - "+NCC+" - "+qc[0],list_dt[2],tk,qr_code(link=tk),NCC,qc[0],ml,td,list_dt[0],list_email,da)
+        st.write('T
         sheet='Ecount'
         # from cv import push
-        ECC=eccount(list_dt[1])
-        push(ECC,sheet)
+#         ECC=eccount(list_dt[1])
+#         push(ECC,sheet)
