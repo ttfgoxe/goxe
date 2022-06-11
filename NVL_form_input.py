@@ -62,13 +62,14 @@ import barcode
 from barcode.writer import ImageWriter
 def qr_code(link="https://engineering.catholic.edu/eecs/index.html"):
         ean = barcode.get('code128', link, writer=ImageWriter())
-        filename = ean.save('code128',{"module_width":0.2, "module_height":4.7, "font_size":7, "text_distance": 2, "quiet_zone": 1})
+        filename = ean.save('code128',{"module_width":0.15, "module_height":4.7, "font_size":7, "text_distance": 2, "quiet_zone": 1})
         return filename
 
 def send_email(subject,total,tk,QC,NCC,qc,ml,td,html,receiver_list,dm):
     # (1) Create the email head (sender, receiver, and subject)
     sender_email = st.secrets['SENDER_EMAIL']
     password = st.secrets['PWD_EMAIL']
+    # receiver_email='hieulam1312@gmail.com'
     email = MIMEMultipart()
     email["From"] = sender_email
     # email["To"] = 'abc'
@@ -95,7 +96,6 @@ def send_email(subject,total,tk,QC,NCC,qc,ml,td,html,receiver_list,dm):
         'html', 'utf-8'))
     part1 = MIMEText(html, 'html')
     email.attach(part1)
-    st.write('test')
     try:
         session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
         session.starttls() #enable security
@@ -122,6 +122,7 @@ def eccount(df):
     elif len(uni_dai)==1:
         string_dai=str(int(uni_dai[0]))
     else:
+
         string_dai=str(int(uni_dai[0]))+"-"+str(int(uni_dai[-1]))
     df4['DÀI 2']=string_dai
     df4['THẺ KIỆN2']=tk
@@ -504,8 +505,7 @@ else:
         list_dt=xuat(tk)
 #         list_dt[0]
         send_email("Thẻ kiện: "+tk+" - "+NCC+" - "+qc[0],list_dt[2],tk,qr_code(link=tk),NCC,qc[0],ml,td,list_dt[0],list_email,da)
-        st.write('Test')
         sheet='Ecount'
         # from cv import push
-#         ECC=eccount(list_dt[1])
-#         push(ECC,sheet)
+        ECC=eccount(list_dt[1])
+        push(ECC,sheet)
