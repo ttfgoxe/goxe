@@ -62,7 +62,7 @@ import barcode
 from barcode.writer import ImageWriter
 def qr_code(link="https://engineering.catholic.edu/eecs/index.html"):
         ean = barcode.get('code128', link, writer=ImageWriter())
-        filename = ean.save('code128',{"module_width":0.15, "module_height":4.7, "font_size":7, "text_distance": 2, "quiet_zone": 1})
+        filename = ean.save('code128',{"module_width":0.2, "module_height":4.7, "font_size":7, "text_distance": 2, "quiet_zone": 1})
         return filename
 
 def send_email(subject,total,tk,QC,NCC,qc,ml,td,html,receiver_list,dm):
