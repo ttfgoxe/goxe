@@ -503,7 +503,7 @@ else:
         list_dt=xuat(tk)
 #         list_dt[0]
         send_email("Thẻ kiện: "+tk+" - "+NCC+" - "+qc[0],list_dt[2],tk,qr_code(link=tk),NCC,qc[0],ml,td,list_dt[0],list_email,da)
-        st.write('T
+        st.write('Test')
         sheet='Ecount'
         # from cv import push
 #         ECC=eccount(list_dt[1])
